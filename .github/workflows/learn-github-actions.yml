@@ -1,10 +1,12 @@
-name: learn-github-actions
+name: learn-telegram-actions
 on: [push]
 jobs:
-  check-bats-version:
+  send-telegram-message:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - run: npm install -g bats
-      - run: bats -v
+    - name: send custom message with args
+      uses: appleboy/telegram-action@master
+      with:
+        to: 806567508
+        token: 1745032824:AAHlK2UlsX1JIcy2I48vFExw-nJfwQwg84w
+        args: The ${{ github.event_name }} event triggered first step.
